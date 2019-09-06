@@ -1,13 +1,14 @@
 package co.villalabs.demo.presentation;
 
-import guru.springframework.netfluxexample.domain.Movie;
-import guru.springframework.netfluxexample.domain.MovieEvent;
-import guru.springframework.netfluxexample.service.MovieService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import co.villalabs.demo.application.MovieService;
+import co.villalabs.demo.domain.entity.Movie;
+import co.villalabs.demo.infrastructure.events.MovieEvent;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -15,10 +16,10 @@ import java.awt.*;
 
 @RestController
 @RequestMapping("/movies")
-public class MovieRestControlle {
+public class MovieRestController {
     private final MovieService movieService;
 
-    public MovieController(MovieService movieService) {
+    public MovieRestController(MovieService movieService) {
         this.movieService = movieService;
     }
 

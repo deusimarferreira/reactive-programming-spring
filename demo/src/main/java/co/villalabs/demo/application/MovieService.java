@@ -1,7 +1,7 @@
 package co.villalabs.demo.application;
 
-import guru.springframework.netfluxexample.domain.Movie;
-import guru.springframework.netfluxexample.domain.MovieEvent;
+import co.villalabs.demo.domain.entity.Movie;
+import co.villalabs.demo.infrastructure.events.MovieEvent;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

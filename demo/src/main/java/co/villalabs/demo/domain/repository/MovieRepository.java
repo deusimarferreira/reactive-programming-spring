@@ -1,7 +1,7 @@
-package co.villalabs.demo.repository;
+package co.villalabs.demo.domain.repository;
 
-import guru.springframework.netfluxexample.domain.Movie;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import co.villalabs.demo.domain.entity.Movie;
 
 public interface MovieRepository extends ReactiveMongoRepository<Movie, String> {
 }

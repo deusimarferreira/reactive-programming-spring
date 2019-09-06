@@ -9,6 +9,9 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MovieEvents {
+public class MovieEvent {
+    
+    private String movieId;
+    private Date date;
     
 }

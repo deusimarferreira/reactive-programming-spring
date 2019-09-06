@@ -1,9 +1,10 @@
 package co.villalabs.demo.infrastructure;
 
-import guru.springframework.netfluxexample.domain.Movie;
-import guru.springframework.netfluxexample.repositories.MovieRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import co.villalabs.demo.domain.entity.Movie;
+import co.villalabs.demo.domain.repository.MovieRepository;
 import reactor.core.publisher.Flux;
 
 import java.util.UUID;
