@@ -12,8 +12,6 @@ import co.villalabs.demo.infrastructure.events.MovieEvent;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.awt.*;
-
 @RestController
 @RequestMapping("/movies")
 public class MovieRestController {
@@ -24,17 +22,17 @@ public class MovieRestController {
     }
 
     @GetMapping(value = "/{id}/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    Flux<MovieEvent> streamMovieEvents(@PathVariable String id){
+    public Flux<MovieEvent> streamMovieEvents(@PathVariable String id){
         return movieService.events(id);
     }
 
     @GetMapping(value = "/{id}")
-    Mono<Movie> getMovieById(@PathVariable String id){
-        return movieService.getMovieById(id);
+    public Mono<Movie> getMovieById(@PathVariable String id){
+        return movieService.getById(id);
     }
 
     @GetMapping
-    Flux<Movie> getAllMovies(){
-        return movieService.getAllMovies();
+    public Flux<Movie> getAllMovies(){
+        return movieService.getAll();
     }
 }

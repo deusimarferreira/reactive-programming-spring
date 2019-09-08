@@ -7,8 +7,6 @@ import co.villalabs.demo.domain.entity.Movie;
 import co.villalabs.demo.domain.repository.MovieRepository;
 import reactor.core.publisher.Flux;
 
-import java.util.UUID;
-
 @Component
 public class BootstrapCLR implements CommandLineRunner {
 
