@@ -1,0 +1,36 @@
+server:
+    port: 8081
+
+spring:
+    profiles:
+        active: chaos-monkey
+    devtools:
+        add-properties: false
+
+chaos:
+    monkey:
+        assaults:
+            level: 5
+            latencyRangeStart: 100
+            latencyRangeEnd: 1000
+            exceptionsActive: true
+            killApplicationActive: false
+        watcher:
+        restController: true
+
+management:
+    metrics:
+        export:
+            prometheus:
+                enabled: true
+    endpoint:
+        metrics:
+            enabled: true
+        chaosmonkey:
+            enabled: true
+        prometheus:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: health,info,chaosmonkey, prometheus
