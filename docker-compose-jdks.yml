@@ -1,0 +1,63 @@
+version: '3'
+services:
+  quotes-service-openjdk:
+    image: "quotes-service-openjdk"
+    container_name: quotes-service-openjdk
+  quotes-client-openjdk:
+    image: "quotes-client-openjdk"
+    container_name: quotes-client-openjdk
+  quotes-service-oraclejdk:
+    image: "quotes-service-oraclejdk"
+    container_name: quotes-service-oraclejdk
+  quotes-client-oraclejdk:
+    image: "quotes-client-oraclejdk"
+    container_name: quotes-client-oraclejdk
+  quotes-service-zulu:
+    image: "quotes-service-zulu"
+    container_name: quotes-service-zulu
+  quotes-client-zulu:
+    image: "quotes-client-zulu"
+    container_name: quotes-client-zulu
+  quotes-service-graalvmce:
+    image: "quotes-service-graalvmce"
+    container_name: quotes-service-graalvmce
+  quotes-client-graalvmce:
+    image: "quotes-client-graalvmce"
+    container_name: quotes-client-graalvmce
+  haproxy:
+    image: "haproxy:1.7"
+    depends_on:
+    - "quotes-service-openjdk"
+    - "quotes-client-openjdk"
+    - "quotes-service-oraclejdk"
+    - "quotes-client-oraclejdk"
+    - "quotes-service-zulu"
+    - "quotes-client-zulu"
+    - "quotes-service-graalvmce"
+    - "quotes-client-graalvmce"
+    ports:
+    - "8080:8080"
+    volumes:
+    - ./haproxy:/usr/local/etc/haproxy
+    container_name: haproxy
+  prometheus:
+    depends_on:
+    - "quotes-service-openjdk"
+    - "quotes-client-openjdk"
+    - "quotes-service-oraclejdk"
+    - "quotes-client-oraclejdk"
+    - "quotes-service-zulu"
+    - "quotes-client-zulu"
+    - "quotes-service-graalvmce"
+    - "quotes-client-graalvmce"
+    image: "prom/prometheus"
+    ports:
+    - "9090:9090"
+    volumes:
+     - ./prom-jdks.yml:/etc/prometheus/prometheus.yml
+    container_name: prometheus
+  grafana:
+     image: "grafana/grafana"
+     ports:
+     - "3000:3000"
+     container_name: grafana

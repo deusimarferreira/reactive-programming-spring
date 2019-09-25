@@ -1,0 +1,49 @@
+#Global configurations
+global:
+  scrape_interval:     5s # Set the scrape interval to every 5 seconds.
+  evaluation_interval: 5s # Evaluate rules every 5 seconds.
+scrape_configs:
+  - job_name: 'quotes-service-openjdk'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-service-openjdk:8080']
+  - job_name: 'quotes-client-openjdk'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-client-openjdk:8080']
+  - job_name: 'quotes-service-oraclejdk'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-service-oraclejdk:8080']
+  - job_name: 'quotes-client-oraclejdk'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-client-oraclejdk:8080']
+  - job_name: 'quotes-service-zulu'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-service-zulu:8080']
+  - job_name: 'quotes-client-zulu'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-client-zulu:8080']
+  - job_name: 'quotes-service-graalvmce'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-service-graalvmce:8080']
+  - job_name: 'quotes-client-graalvmce'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+    - targets: ['quotes-client-graalvmce:8080']
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['localhost:9090']
